@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.shadow.mybatis_demo.dao.UserDao">
+
+	<select id="getUser" resultType="org.shadow.mybatis_demo.entity.User">
+		Select id, name, email, createTime, lastTime From User Where id = #{id}
+	</select>
+	
+	<select id="getUserList" resultType="org.shadow.mybatis_demo.entity.User">
+	   Select id, name, email, createTime, lastTime From User 
+	</select>
+
+	<insert id="insertUser" parameterType="org.shadow.mybatis_demo.entity.User">
+		Insert into User (id, name, password, email, createTime, lastTime)
+		Values(#{id}, #{name},
+		#{password}, #{email}, #{createTime}, #{lastTime})
+	</insert>
+
+
+	<delete id="deleteUser" parameterType="int">
+		Delete From User Where id = #{id}
+	</delete>
+
+	<update id="updateUser">
+		Update User set lastTime = #{lastTime} Where id = #{id}
+	</update>
+
+
+</mapper>
